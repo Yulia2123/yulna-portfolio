@@ -1,0 +1,213 @@
+.projects {
+  background: var(--color-blue);
+  color: var(--color-text);
+}
+
+.container {
+  width: min(var(--container-width), calc(100% - 64px));
+  margin-inline: auto;
+}
+
+.projectsHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.projectsHeading :global(.section-label) {
+  color: var(--color-burgundy);
+}
+
+.projectsHeading h2 span {
+  color: #344c72;
+}
+
+.projectsHeading p {
+  max-width: 350px;
+  margin-bottom: 0;
+}
+
+.projectsHeading > a {
+  flex-shrink: 0;
+  color: var(--color-burgundy);
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+
+.projectsHeading > a:hover {
+  opacity: 0.65;
+}
+
+.projectsList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 28px;
+  background: var(--color-burgundy-dark);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgb(53 7 10 / 15%);
+}
+
+.projectCard {
+  min-width: 0;
+  padding: 10px;
+  color: var(--color-white);
+  background: rgb(255 255 255 / 3%);
+  border: 1px solid rgb(165 188 214 / 35%);
+  border-radius: 12px;
+  transition: transform var(--transition), border-color var(--transition),
+    background var(--transition);
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-blue);
+  background: rgb(255 255 255 / 6%);
+}
+
+.projectImage {
+  display: block;
+  height: 145px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-blue);
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.projectCard:hover .projectImage img {
+  transform: scale(1.05);
+}
+
+.projectInfo h3 {
+  margin: 0 0 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+}
+
+.projectInfo > p {
+  min-height: 42px;
+  margin: 0 0 14px;
+  color: rgb(255 255 255 / 70%);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.projectTechnologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.projectTechnologies span {
+  padding: 5px 9px;
+  color: var(--color-blue);
+  border: 1px solid rgb(165 188 214 / 45%);
+  border-radius: 20px;
+  font-size: 10px;
+}
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-blue);
+  font-size: 12px;
+  font-weight: 600;
+  transition: gap var(--transition);
+}
+
+.projectLink:hover {
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .projectsList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .projectsHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .projectsList {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .projectImage {
+    height: 190px;
+  }
+}
+
+/* Light theme */
+:global([data-theme="light"]) .projects {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+:global([data-theme="light"]) .projectsHeading h2 span {
+  color: var(--color-blue-light);
+}
+
+:global([data-theme="light"]) .projectsHeading p {
+  color: var(--color-muted);
+}
+
+:global([data-theme="light"]) .projectsList {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  box-shadow: 0 18px 40px var(--color-accent-glow);
+}
+
+:global([data-theme="light"]) .projectCard {
+  color: var(--color-text);
+  background: #ecc4c3;
+  border-color: #b97d7b;
+}
+
+:global([data-theme="light"]) .projectCard:hover {
+  background: #f0cecd;
+  border-color: var(--color-burgundy-dark);
+}
+
+:global([data-theme="light"]) .projectImage {
+  background: var(--color-surface);
+}
+
+:global([data-theme="light"]) .projectInfo h3 {
+  color: var(--color-text);
+}
+
+:global([data-theme="light"]) .projectInfo > p {
+  color: #454235;
+}
+
+:global([data-theme="light"]) .projectTechnologies span {
+  color: #575527;
+  border-color: var(--color-burgundy);
+}
+
+:global([data-theme="light"]) .projectLink {
+  color: var(--color-burgundy-dark);
+}

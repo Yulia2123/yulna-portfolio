@@ -1,0 +1,29 @@
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.heading h2 {
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .heading {
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .heading h2 {
+    font-size: 25px;
+  }
+
+  .heading :global(.star) {
+    width: 23px;
+    height: 23px;
+  }
+}
