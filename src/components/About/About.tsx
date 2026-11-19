@@ -2,7 +2,7 @@ import css from "./About.module.css";
 
 const qualities = [
   {
-    icon: "♧",
+    icon: "♡",
     title: "Team player",
     description:
       "I value open communication, shared ideas, and growing together.",
@@ -14,7 +14,7 @@ const qualities = [
       "I enjoy exploring challenges, anticipating potential issues, and finding practical solutions.",
   },
   {
-    icon: "✧",
+    icon: "♡",
     title: "Product thinker",
     description:
       "I look beyond the requirements to spot missing details and opportunities to improve the user experience.",

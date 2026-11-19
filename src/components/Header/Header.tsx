@@ -8,6 +8,7 @@ type Theme = "light" | "dark";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("dark");
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("portfolio-theme");
@@ -16,6 +17,32 @@ export default function Header() {
       setTheme(savedTheme);
       document.documentElement.dataset.theme = savedTheme;
     }
+  }, []);
+
+  useEffect(() => {
+    const sections = ["about", "skills", "projects", "contacts"]
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
   const toggleTheme = () => {
@@ -40,6 +67,36 @@ export default function Header() {
             Yulna
           </a>
         </div>
+
+        <nav className={css.desktopNav} aria-label="Main navigation">
+          <a
+            href="#about"
+            className={activeSection === "about" ? css.active : ""}
+          >
+            About
+          </a>
+
+          <a
+            href="#skills"
+            className={activeSection === "skills" ? css.active : ""}
+          >
+            Skills
+          </a>
+
+          <a
+            href="#projects"
+            className={activeSection === "projects" ? css.active : ""}
+          >
+            Projects
+          </a>
+
+          <a
+            href="#contacts"
+            className={activeSection === "contacts" ? css.active : ""}
+          >
+            Contact
+          </a>
+        </nav>
 
         <div className={css.actions}>
           <button
@@ -109,16 +166,35 @@ export default function Header() {
           className={css.menu}
           aria-label="Main navigation"
         >
-          <a href="#about" onClick={() => setIsMenuOpen(false)}>
+          <a
+            href="#about"
+            className={activeSection === "about" ? css.active : ""}
+            onClick={() => setIsMenuOpen(false)}
+          >
             About
           </a>
-          <a href="#skills" onClick={() => setIsMenuOpen(false)}>
+
+          <a
+            href="#skills"
+            className={activeSection === "skills" ? css.active : ""}
+            onClick={() => setIsMenuOpen(false)}
+          >
             Skills
           </a>
-          <a href="#projects" onClick={() => setIsMenuOpen(false)}>
+
+          <a
+            href="#projects"
+            className={activeSection === "projects" ? css.active : ""}
+            onClick={() => setIsMenuOpen(false)}
+          >
             Projects
           </a>
-          <a href="#contacts" onClick={() => setIsMenuOpen(false)}>
+
+          <a
+            href="#contacts"
+            className={activeSection === "contacts" ? css.active : ""}
+            onClick={() => setIsMenuOpen(false)}
+          >
             Contact
           </a>
         </nav>

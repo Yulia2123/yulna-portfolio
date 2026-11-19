@@ -42,7 +42,7 @@ export default function Hero() {
         <div className={css.visual} aria-hidden="true">
           <div className={css.imageBlock}>
             <img
-              src="/images"
+              src="/images/hero-image.jpg"
               alt="My developer workspace"
               className={css.heroImage}
             />

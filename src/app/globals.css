@@ -28,6 +28,9 @@
   --color-theme-active: #354052;
   --color-theme-glow: rgb(154 175 201 / 20%);
 
+  --color-sage: #91a98b;
+  --color-sage-light: #b5c9a8;
+
   --font-main: Arial, Helvetica, sans-serif;
   --font-allura: "Allura", cursive;
 
@@ -67,7 +70,7 @@
 }
 
 [data-theme="light"] .section {
-  background-color: #f8f5f0;
+  background-color: #ddd3c9;
 }
 
 html {
@@ -128,7 +131,7 @@ main {
   padding: 0 22px;
 
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: 25px;
 
   font: inherit;
   font-size: 14px;
@@ -150,8 +153,8 @@ main {
 }
 
 .btn-primary:hover {
-  background: var(--color-burgundy-light);
-  border-color: var(--color-burgundy-light);
+  background: var(--color-blue-light);
+  border-color: var(--color-blue-light);
   transform: translateY(-2px);
 }
 
@@ -283,7 +286,7 @@ main {
 
 .section h2 {
   margin: 0 0 20px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-main);
   font-size: clamp(32px, 4vw, 42px);
   font-weight: 600;
   line-height: 1.15;
@@ -292,7 +295,10 @@ main {
 .section h2 span {
   display: block;
   color: var(--color-blue);
-  font-style: italic;
+  font-family: var(--font-allura), cursive;
+  font-size: 1.3em;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .section p {
