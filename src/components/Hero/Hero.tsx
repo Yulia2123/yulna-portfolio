@@ -3,7 +3,7 @@ import css from "./Hero.module.css";
 
 export default function Hero() {
   return (
-    <section className={css.hero}>
+    <section className={css.hero} id="home">
       <div className={css.container}>
         <div className={css.content}>
           <p className={css.eyebrow}>FULLSTACK DEVELOPER</p>

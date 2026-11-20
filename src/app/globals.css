@@ -52,8 +52,8 @@
   --color-burgundy-dark: #925e5d;
   --color-burgundy-light: #ecc4c3;
 
-  --color-blue: #928e5e;
-  --color-blue-light: #575527;
+  --color-blue: #91a98b;
+  --color-blue-light: #91a98b;
   --color-lavender: #ecc4c3;
 
   --color-white: #ffffff;
@@ -64,7 +64,7 @@
   --color-border: rgb(87 85 39 / 14%);
   --color-accent-glow: rgb(185 125 123 / 18%);
 
-  --color-theme-icon: #928e5e;
+  --color-theme-icon: #91a98b;
   --color-theme-active: #ecc4c3;
   --color-theme-glow: rgb(185 125 123 / 20%);
 }
@@ -262,7 +262,7 @@ main {
 }
 
 .container {
-  width: min(var(--container-width), calc(100% - 64px));
+  width: min(calc(100% - 64px), 1280px);
   margin-inline: auto;
 }
 
@@ -330,9 +330,24 @@ main {
   text-shadow: 0 0 6px rgb(185 125 123 / 25%);
 }
 
-.container {
-  width: min(100% - 64px, 1280px);
-  margin-inline: auto;
+@media (max-width: 600px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .section p {
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+  }
+
+  .section h2 {
+    font-size: clamp(30px, 8vw, 38px);
+  }
 }
 
 @media (min-width: 1920px) {

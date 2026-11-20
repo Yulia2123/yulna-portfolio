@@ -59,7 +59,9 @@
 
 .skillCard:hover {
   transform: translateY(-6px);
-  background: rgb(255 255 255 / 7%);
+}
+
+.skillCard:hover .cardFront {
   border-color: rgb(165 188 214 / 55%);
 }
 
@@ -116,11 +118,20 @@
 }
 
 .cardHint {
+  position: absolute;
+  right: 26px;
+  bottom: 22px;
+  z-index: 2;
   display: block;
-  margin-top: auto;
-  padding-top: 18px;
-  color: var(--color-blue);
+  width: fit-content;
+  color: var(--color-blue-light);
   font-size: 11px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cardBack .cardHint {
+  color: var(--color-white);
 }
 
 .backTitle {
@@ -152,6 +163,37 @@
 .skillCard:focus-visible {
   outline: 2px solid var(--color-blue-light);
   outline-offset: 4px;
+}
+
+.cardFront,
+.cardBack {
+  box-sizing: border-box;
+}
+
+.cardFront {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardBack {
+  display: flex;
+  flex-direction: column;
+}
+
+.backList {
+  flex: 1;
+  min-height: 0;
+  gap: 10px;
+}
+
+.backItem {
+  line-height: 1.4;
+}
+
+.cardHint {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .cardTop {
@@ -210,8 +252,10 @@
 .skillList {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 9px;
   margin-top: auto;
+  padding-bottom: 30px;
 }
 
 .skillTag {
@@ -234,69 +278,24 @@
   border-color: var(--color-blue);
 }
 
-/* Tablet */
-@media (max-width: 900px) {
-  .skillsGroups {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .cardFront,
-  .cardBack {
-    padding: 16px 12px;
-  }
-
-  .cardInner {
-    height: 310px;
-  }
-
-  .skillCard {
-    min-height: 310px;
-  }
-
-  .cardContent h3 {
-    font-size: 17px;
-  }
-
-  .cardContent p {
-    font-size: 11px;
-  }
-
-  .skillTag {
-    padding: 0 9px;
-    font-size: 10px;
-  }
-
-  .cardTitle,
-  .backTitle {
-    font-size: 17px;
-  }
-}
-
 @media (max-width: 600px) {
-  .cardFront,
-  .cardBack {
-    padding: 24px;
-  }
-
-  .cardInner {
-    height: 290px;
-  }
-  .container {
-    gap: 32px;
-  }
-
   .skillsGroups {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .skillCard:last-child {
-    grid-column: auto;
+  .skillCard {
+    min-height: 320px;
+    padding: 0;
   }
 
-  .skillCard {
-    min-height: 290px;
+  .cardInner {
+    height: 320px;
+  }
+
+  .cardFront,
+  .cardBack {
+    padding: 22px;
   }
 
   .cardTop {
@@ -310,16 +309,62 @@
   .cardLine {
     margin: 18px 0;
   }
+
+  .backTitle {
+    margin: 12px 0 14px;
+  }
+
+  .backList {
+    gap: 10px;
+  }
+
+  .backItem {
+    font-size: 12px;
+  }
+
+  .container {
+    gap: 32px;
+  }
+
+  .skillList {
+    padding-bottom: 30px;
+  }
+
+  .cardHint {
+    right: 22px;
+    bottom: 18px;
+  }
 }
 
 @media (max-width: 375px) {
   .skillCard {
-    padding: 20px;
+    min-height: 330px;
   }
 
-  .skillTag {
-    padding: 0 10px;
+  .cardInner {
+    height: 330px;
+  }
+
+  .cardFront,
+  .cardBack {
+    padding: 18px;
+  }
+
+  .cardHint {
     font-size: 10px;
+  }
+
+  .backItem {
+    font-size: 11px;
+  }
+
+  .skillList {
+    padding-bottom: 28px;
+  }
+
+  .cardHint {
+    right: 18px;
+    bottom: 16px;
   }
 }
 
@@ -372,4 +417,14 @@
 
 :global([data-theme="light"]) .skillsIntro p {
   color: var(--color-text);
+}
+
+:global([data-theme="light"]) .cardFront {
+  background: #ecc4c3;
+  border-color: #b97d7b;
+}
+
+:global([data-theme="light"]) .cardBack {
+  background: var(--color-sage-light);
+  border-color: var(--color-sage);
 }

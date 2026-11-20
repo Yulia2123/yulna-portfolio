@@ -8,27 +8,54 @@ const projects = [
     title: "Nature's Wonders",
     type: "Travel & Community Platform",
     contribution:
-      "Frontend development, API integration, authentication, story management and category filtering.",
-    description: "Travel platform with stories, travellers and categories.",
+      "Team Lead and Fullstack Developer. Coordinated the frontend team's work, distributed tasks, developed website layouts and implemented user authentication and registration.",
+    description:
+      "A travel and community platform where users can share travel stories, explore destinations, discover other travellers and save interesting articles. Developed the website's main pages and visual layouts, implemented registration, login and logout functionality, and connected the frontend to the backend API.",
     image: "/images/projects/tandem.png",
-    technologies: ["Next.js", "TypeScript", "React Query"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Zustand",
+      "TanStack Query",
+      "Node.js",
+      "Express",
+      "MongoDB",
+    ],
     link: "https://tandem-front-git-dev-hw-2.vercel.app/",
   },
   {
     title: "NMT.in.ua",
     type: "Educational Platform",
     contribution:
-      "Frontend development, interface improvements, bug fixing and responsive layouts.",
-    description: "Educational platform for NMT exam preparation.",
+      "Frontend Developer. Developed an interactive NMT exam simulator and continue maintaining the platform, fixing bugs and improving its functionality.",
+    description:
+      "An educational platform that helps students prepare for the Ukrainian National Multi-Subject Test (NMT) through practice materials and an interactive exam simulator.",
     image: "/images/projects/nmt.png",
-    technologies: ["Next.js", "TypeScript", "MongoDB"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "MySQL",
+      "REST API",
+    ],
     link: "https://nmt.in.ua/",
   },
   {
     title: "Paw Hut",
-    description: "Wellness and yoga landing page.",
+    description:
+      "Developed the Paw Hut animal shelter website as part of a team project. Independently implemented the About Us section with a responsive Swiper slider, navigation, and pagination. As Team Lead, coordinated the frontend team's workflow, distributed tasks, supported teammates, and helped the team overcome challenges and meet the project deadline.",
     image: "/images/projects/pawhut.png",
-    technologies: ["React", "JavaScript", "CSS"],
+    technologies: [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Vite",
+      "Axios",
+      "Swiper",
+      "Accordion.js",
+    ],
     link: "https://yulia2123.github.io/prime-force/",
   },
 ];

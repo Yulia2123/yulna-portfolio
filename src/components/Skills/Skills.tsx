@@ -7,7 +7,8 @@ const skillGroups = [
   {
     number: "01",
     title: "Frontend",
-    description: "Creating responsive and interactive user interfaces.",
+    description:
+      "Building responsive, interactive and user-friendly interfaces.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <rect
@@ -28,18 +29,20 @@ const skillGroups = [
         />
       </svg>
     ),
-    skills: ["JavaScript", "TypeScript", "React", "Next.js"],
+    skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Next.js"],
     details: [
-      "Responsive layouts",
-      "Reusable React components",
-      "State management",
-      "API integration",
+      "Responsive and adaptive layouts",
+      "Flexbox and CSS styling",
+      "Reusable components and React state",
+      "Forms and event handling",
+      "Routing and API integration",
+      "Performance optimization",
     ],
   },
   {
     number: "02",
     title: "Backend",
-    description: "Building APIs and working with server-side logic.",
+    description: "Developing server-side functionality and working with data.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <ellipse
@@ -64,16 +67,18 @@ const skillGroups = [
     ),
     skills: ["Node.js", "Express", "REST API", "MongoDB"],
     details: [
-      "REST API development",
-      "Authentication",
-      "CRUD operations",
-      "MongoDB integration",
+      "Building REST API endpoints",
+      "Working with databases",
+      "Data validation and filtering",
+      "Sorting and pagination",
+      "User authentication",
+      "Email and image handling",
     ],
   },
   {
     number: "03",
-    title: "Tools",
-    description: "Tools that support my development workflow.",
+    title: "Tools & Concepts",
+    description: "Tools and techniques for efficient development and teamwork.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
@@ -90,12 +95,14 @@ const skillGroups = [
         />
       </svg>
     ),
-    skills: ["Git", "GitHub", "React Query", "Figma"],
+    skills: ["Git", "GitHub", "Vite", "TanStack Query", "Formik", "Zustand"],
     details: [
-      "Version control with Git",
-      "Team collaboration",
-      "Server state management",
-      "Interface prototyping",
+      "Version control and team collaboration",
+      "Managing server state with TanStack Query",
+      "Client-side state management",
+      "Form handling and validation",
+      "Asynchronous JavaScript and Promises",
+      "HTTP requests and browser storage",
     ],
   },
 ];
@@ -164,7 +171,7 @@ export default function Skills() {
                       ))}
                     </span>
 
-                    <span className={css.cardHint}>Click to explore ↗</span>
+                    <span className={css.cardHint}>Click here ↗</span>
                   </span>
 
                   <span className={css.cardBack}>

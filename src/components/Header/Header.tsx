@@ -20,7 +20,7 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const sections = ["about", "skills", "projects", "contacts"]
+    const sections = ["home", "about", "skills", "projects", "contacts"]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
 
@@ -69,6 +69,12 @@ export default function Header() {
         </div>
 
         <nav className={css.desktopNav} aria-label="Main navigation">
+          <a
+            href="#home"
+            className={activeSection === "home" ? css.active : ""}
+          >
+            Home
+          </a>
           <a
             href="#about"
             className={activeSection === "about" ? css.active : ""}
@@ -166,6 +172,14 @@ export default function Header() {
           className={css.menu}
           aria-label="Main navigation"
         >
+          <a
+            href="#home"
+            className={activeSection === "home" ? css.active : ""}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </a>
+
           <a
             href="#about"
             className={activeSection === "about" ? css.active : ""}
