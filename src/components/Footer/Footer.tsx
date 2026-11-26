@@ -8,9 +8,7 @@ export default function Footer() {
           Yulna
         </a>
 
-        <p>
-          © {new Date().getFullYear()} Yulna. Designed & developed with care.
-        </p>
+        <p>© {new Date().getFullYear()} Yulna. Designed & Developed.</p>
 
         <a href="/" className={css.backToTop}>
           Back to top ↑

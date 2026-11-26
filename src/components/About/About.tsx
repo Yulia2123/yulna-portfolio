@@ -1,23 +1,33 @@
 import css from "./About.module.css";
 
-const qualities = [
+const workSteps = [
   {
-    icon: "♡",
-    title: "Team player",
+    number: "01",
+    label: "DISCUSS",
+    title: "Getting to know the project",
     description:
-      "I value open communication, shared ideas, and growing together.",
+      "We discuss your idea, goals and expectations. If you already have a design, Figma file or technical brief, we go through it, clarify the details and agree on the scope of work.",
   },
   {
-    icon: "♡",
-    title: "Problem solver",
+    number: "02",
+    label: "AGREE & START",
+    title: "Setting clear expectations",
     description:
-      "I enjoy exploring challenges, anticipating potential issues, and finding practical solutions.",
+      "We agree on the project scope, timeline and budget. Once everything is confirmed, an upfront payment secures the project and development can begin.",
   },
   {
-    icon: "♡",
-    title: "Product thinker",
+    number: "03",
+    label: "BUILD",
+    title: "Bringing the design to life",
     description:
-      "I look beyond the requirements to spot missing details and opportunities to improve the user experience.",
+      "I turn the approved design into a functional interface, focusing on responsiveness, interactivity and thoughtful details. I'll keep you updated on the progress along the way.",
+  },
+  {
+    number: "04",
+    label: "REVIEW & DELIVER",
+    title: "Final checks and handover",
+    description:
+      "We review the finished work, test the interface, make agreed adjustments and finalize the project. The remaining payment is completed before the final handover.",
   },
 ];
 
@@ -26,78 +36,50 @@ export default function About() {
     <section className={`${css.about} section`} id="about">
       <div className={`${css.container} container`}>
         <div className={css.aboutContent}>
-          <span className="section-label">ABOUT ME</span>
+          <p className={css.eyebrow}>A LITTLE ABOUT ME</p>
 
           <h2>
             A little about me
-            <span>and my journey.</span>
+            <span>and what I love building.</span>
           </h2>
 
           <p>
-            I’m interested not only in how a website is built, but also in the
-            product behind it — the idea, the people who use it, and the
-            experience it creates. I like looking beyond the initial
-            requirements: thinking about what users might need, noticing missing
-            details, anticipating potential issues, and finding opportunities to
-            make a product more intuitive and thoughtful. I believe these small
-            considerations can make a real difference in how a website feels and
-            works. I’m especially interested in educational platforms,
-            content-driven websites, and digital services. I enjoy exploring
-            ideas, finding practical solutions, and understanding how different
-            parts of a product work together. For me, good development is about
-            more than making things function. It’s about building something
-            useful, considering the bigger picture, and continuously looking for
-            ways to make the experience better.
+            I don't like treating development as simply putting pieces of code
+            together. There's always room to explore, rethink and make something
+            a little more interesting.
           </p>
 
-          <div className={css.qualities}>
-            {qualities.map((item) => (
-              <div className={css.quality} key={item.title}>
-                <span className={css.qualityIcon}>{item.icon}</span>
-
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p>
+            I like exploring ideas, solving problems, noticing details and
+            experimenting with ways to make interfaces more intuitive and
+            engaging. I'm always curious to learn something new and turn that
+            curiosity into practical, creative solutions.
+          </p>
         </div>
 
-        <div className={css.aboutCard}>
-          <h3>How I work</h3>
-
-          <div className={css.workItem}>
-            <span>01</span>
+        <div className={css.process}>
+          <div className={css.processHeader}>
             <div>
-              <h4>Understand</h4>
-              <p>
-                I start by understanding the idea, its purpose, and the people
-                it's built for..
-              </p>
+              <p className={css.eyebrow}>WORKING TOGETHER</p>
+              <h3>
+                From the first idea
+                <span>to the final detail.</span>
+              </h3>
             </div>
           </div>
 
-          <div className={css.workItem}>
-            <span>02</span>
-            <div>
-              <h4>Think ahead</h4>
-              <p>
-                I look beyond the obvious, consider potential issues, and notice
-                what could make the product better.
-              </p>
-            </div>
-          </div>
+          <div className={css.timeline}>
+            {workSteps.map((step) => (
+              <article className={css.workItem} key={step.number}>
+                <div className={css.stepNumber}>{step.number}</div>
 
-          <div className={css.workItem}>
-            <span>03</span>
-            <div>
-              <h4>Build & refine</h4>
-              <p>
-                I turn ideas into functional solutions, pay attention to
-                details, and improve them through feedback and testing.
-              </p>
-            </div>
+                <div className={css.stepContent}>
+                  <span className={css.stepLabel}>{step.label}</span>
+                  <h4>{step.title}</h4>
+                  <p>{step.description}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>

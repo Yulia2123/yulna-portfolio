@@ -3,17 +3,18 @@ import { Resend } from "resend";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, phone, message } = await request.json();
+
     if (
       typeof name !== "string" ||
       typeof email !== "string" ||
-      typeof message !== "string" ||
+      typeof phone !== "string" ||
       !name.trim() ||
       !email.trim() ||
-      !message.trim()
+      !phone.trim()
     ) {
       return NextResponse.json(
-        { error: "Please fill in all fields." },
+        { error: "Please fill in all required fields." },
         { status: 400 }
       );
     }
@@ -36,6 +37,11 @@ export async function POST(request: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
+    const messageText =
+      typeof message === "string" && message.trim()
+        ? message.trim()
+        : "No message provided.";
+
     const { error } = await resend.emails.send({
       from: process.env.RESEND_FROM || "Portfolio <onboarding@resend.dev>",
       to: process.env.CONTACT_EMAIL,
@@ -44,9 +50,10 @@ export async function POST(request: Request) {
       text: `
 Name: ${name.trim()}
 Email: ${email.trim()}
+Phone: ${phone.trim()}
 
 Message:
-${message.trim()}
+${messageText}
       `,
     });
 

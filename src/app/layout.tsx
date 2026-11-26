@@ -1,32 +1,29 @@
 import type { Metadata } from "next";
 import { Allura } from "next/font/google";
-import "./globals.css";
 import Script from "next/script";
 
+import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
+
 const allura = Allura({
+  variable: "--font-allura",
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-allura",
 });
 
 const themeScript = `
-  try {
-    const savedTheme = localStorage.getItem("portfolio-theme");
-    document.documentElement.dataset.theme =
-      savedTheme === "light" || savedTheme === "dark"
-        ? savedTheme
-        : "dark";
-  } catch {
-    document.documentElement.dataset.theme = "dark";
-  }
+  (function () {
+    try {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      const theme = savedTheme || "light";
+      document.documentElement.dataset.theme = theme;
+    } catch (error) {}
+  })();
 `;
 
 export const metadata: Metadata = {
-  title: "Yulna | Fullstack Developer",
-  description: "Portfolio of Yulna, a developer.",
-  icons: {
-    icon: "/icons/icon.svg",
-  },
+  title: "Yulna | Frontend Developer",
+  description: "Yuliana's developer portfolio",
 };
 
 export default function RootLayout({
@@ -36,12 +33,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Script
-        id="theme-script"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: themeScript }}
-      />
-      <body className={allura.variable}>{children}</body>
+      <head>
+        <Script
+          id="theme-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeScript }}
+        />
+      </head>
+
+      <body className={allura.variable}>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

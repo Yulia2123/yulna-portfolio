@@ -122,7 +122,6 @@ export default function Skills() {
     <section className={`${css.skills} section`} id="skills">
       <div className={`${css.container} container`}>
         <div className={css.skillsIntro}>
-          <span className="section-label">MY SKILLS</span>
           <h2>
             Technologies
             <span>I work with.</span>

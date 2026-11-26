@@ -137,8 +137,6 @@ export default function Projects() {
 
           <div className={css.projectsVisual}>
             <div className={css.projectsIntro}>
-              <span className="section-label">PROJECTS</span>
-
               <h2>
                 Featured projects.
                 <span>Real experience..</span>

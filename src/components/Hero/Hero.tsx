@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import css from "./Hero.module.css";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className={css.hero} id="home">
       <div className={css.container}>
@@ -9,33 +14,26 @@ export default function Hero() {
           <p className={css.eyebrow}>FULLSTACK DEVELOPER</p>
 
           <h1 className={`${css.title} brand-text`}>
-            You bring the idea.<span> I'll help make it real.</span>
+            {t.hero.title}
+            <span> {t.hero.titleAccent}</span>
           </h1>
 
-          <p className={css.description}>
-            Hi, I'm Yuliana — a frontend-focused Fullstack Developer who enjoys
-            turning ideas into thoughtful, user-friendly digital experiences.
-            I'm interested in building products that make information easier to
-            access, learning more engaging, and everyday tasks simpler. I value
-            clear communication, thoughtful decisions, and working together
-            towards a result everyone can be proud of. Have an idea or just want
-            to connect? I'd love to hear from you.
-          </p>
+          <p className={css.description}>{t.hero.description}</p>
 
           <div className={css.actions}>
             <Link href="#projects" className="btn btn-primary">
-              Explore my work
+              {t.hero.exploreWork}
               <span aria-hidden="true">↗</span>
             </Link>
 
             <Link href="#contacts" className="btn btn-secondary">
-              Get in touch
+              {t.hero.getInTouch}
             </Link>
           </div>
 
           <p className={css.availability}>
             <span className={css.statusDot} />
-            Open to internship and junior opportunities
+            {t.hero.availability}
           </p>
         </div>
 

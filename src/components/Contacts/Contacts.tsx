@@ -6,23 +6,25 @@ import css from "./Contacts.module.css";
 type FormData = {
   name: string;
   email: string;
+  phone: string;
   message: string;
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
-
 type FormTouched = Partial<Record<keyof FormData, boolean>>;
 
 const initialForm: FormData = {
   name: "",
   email: "",
+  phone: "",
   message: "",
 };
 
 const LIMITS = {
   name: { min: 3, max: 50 },
   email: { min: 5, max: 100 },
-  message: { min: 20, max: 1000 },
+  phone: { min: 10, max: 20 },
+  message: { min: 0, max: 1000 },
 };
 
 export default function Contacts() {
@@ -34,11 +36,16 @@ export default function Contacts() {
 
   const validateField = (name: keyof FormData, value: string): string => {
     const trimmedValue = value.trim();
-    const limits = LIMITS[name];
+
+    if (name === "message" && !trimmedValue) {
+      return "";
+    }
 
     if (!trimmedValue) {
       return "This field is required";
     }
+
+    const limits = LIMITS[name];
 
     if (trimmedValue.length < limits.min) {
       return `Minimum ${limits.min} characters required`;
@@ -53,6 +60,15 @@ export default function Contacts() {
 
       if (!emailPattern.test(trimmedValue)) {
         return "Please enter a valid email";
+      }
+    }
+
+    if (name === "phone") {
+      const phonePattern = /^\+?[\d\s()-]+$/;
+      const digitsOnly = trimmedValue.replace(/\D/g, "");
+
+      if (!phonePattern.test(trimmedValue) || digitsOnly.length < 10) {
+        return "Please enter a valid phone number";
       }
     }
 
@@ -94,11 +110,17 @@ export default function Contacts() {
     const newErrors: FormErrors = {
       name: validateField("name", form.name),
       email: validateField("email", form.email),
+      phone: validateField("phone", form.phone),
       message: validateField("message", form.message),
     };
 
     setErrors(newErrors);
-    setTouched({ name: true, email: true, message: true });
+    setTouched({
+      name: true,
+      email: true,
+      phone: true,
+      message: true,
+    });
 
     if (Object.values(newErrors).some(Boolean)) {
       return;
@@ -133,12 +155,15 @@ export default function Contacts() {
     }
   };
 
+  const isFormValid =
+    !validateField("name", form.name) &&
+    !validateField("email", form.email) &&
+    !validateField("phone", form.phone);
+
   return (
     <section className={`${css.contacts} section`} id="contacts">
       <div className={`${css.container} container`}>
         <div className={css.contactsContent}>
-          <span className="section-label">LET'S CONNECT</span>
-
           <h2>
             Have an idea?<span> Let's make it work.</span>
           </h2>
@@ -211,7 +236,27 @@ export default function Contacts() {
             </span>
           )}
 
-          <label htmlFor="contact-message">Message *</label>
+          <label htmlFor="contact-phone">Phone *</label>
+          <input
+            id="contact-phone"
+            name="phone"
+            type="tel"
+            placeholder="+380 00 000 00 00"
+            value={form.phone}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.phone ? css.inputError : ""}
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
+          />
+
+          {errors.phone && (
+            <span id="phone-error" className={css.errorText}>
+              {errors.phone}
+            </span>
+          )}
+
+          <label htmlFor="contact-message">Message</label>
           <textarea
             id="contact-message"
             name="message"
@@ -230,15 +275,9 @@ export default function Contacts() {
             </span>
           )}
 
-          <button type="submit" disabled={isSubmitting}>
+          <button type="submit" disabled={isSubmitting || !isFormValid}>
             {isSubmitting ? "Sending..." : "Send message"}
           </button>
-
-          {status === "success" && (
-            <p className={css.successMessage} role="status">
-              Thank you! Your message has been sent successfully.
-            </p>
-          )}
 
           {status === "error" && (
             <p className={css.errorMessage} role="alert">
@@ -246,6 +285,24 @@ export default function Contacts() {
             </p>
           )}
         </form>
+
+        {status === "success" && (
+          <div className={css.toast} role="status">
+            <span className={css.toastIcon}>✓</span>
+            <div>
+              <strong>Message sent!</strong>
+              <p>Thank you for reaching out. I'll get back to you soon.</p>
+            </div>
+            <button
+              type="button"
+              className={css.toastClose}
+              onClick={() => setStatus("")}
+              aria-label="Close notification"
+            >
+              ×
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

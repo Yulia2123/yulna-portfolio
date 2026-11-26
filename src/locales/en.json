@@ -1,0 +1,37 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
+    "contacts": "Contact",
+    "contactMe": "Contact me",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation",
+    "chooseLanguage": "Choose language",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "hero": {
+    "title": "You bring the idea.",
+    "titleAccent": "I'll help make it real.",
+    "description": "I'm Yuliana, a frontend-focused developer exploring the intersection of code, design and interaction — building digital experiences that are not just functional, but fun to explore.",
+    "exploreWork": "Explore my work",
+    "getInTouch": "Get in touch",
+    "availability": "Open to internship and junior opportunities"
+  },
+  "about": {
+    "title": "A little about me",
+    "subtitle": "and what I love building."
+  },
+  "contacts": {
+    "title": "Have an idea?",
+    "subtitle": "Let's make it work.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send message"
+  }
+}

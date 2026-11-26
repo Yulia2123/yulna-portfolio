@@ -178,6 +178,7 @@
   z-index: 3;
   left: 22px;
   right: 22px;
+  top: 65px;
   bottom: 24px;
 
   display: flex;
@@ -189,10 +190,16 @@
   visibility: hidden;
   transform: translateY(12px);
 
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+
   transition: opacity 0.45s ease 0.15s,
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
     visibility 0s linear 0.65s;
-
   pointer-events: none;
 }
 
@@ -202,7 +209,6 @@
   transform: translateY(0);
   transition: opacity 0.45s ease 0.2s,
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s, visibility 0s;
-
   pointer-events: auto;
 }
 
@@ -308,6 +314,23 @@
   width: 100%;
 }
 
+.cardDetails::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cardDetails::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cardDetails::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+}
+
+.projectCard.active .cardTrigger {
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .projects {
     padding-block: 75px;
@@ -379,6 +402,44 @@
 
   .projectCard.active {
     height: 420px;
+  }
+
+  .projectCard.active .cardHeading {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
+    font-size: clamp(14px, 2.5vw, 18px);
+    line-height: 1.2;
+  }
+
+  .cardDetails p {
+    display: block;
+    overflow: visible;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .cardDetailsTitle {
+    font-size: clamp(15px, 2.5vw, 19px);
+    line-height: 1.2;
+  }
+
+  .projectTechnologies {
+    gap: 4px;
+    max-width: 100%;
+  }
+
+  .projectTechnologies span {
+    font-size: 9px;
+    padding: 4px 7px;
+    white-space: nowrap;
+  }
+
+  .githubLink {
+    font-size: 11px;
+    white-space: nowrap;
   }
 }
 
@@ -468,24 +529,49 @@
   }
 
   .cardDetails {
-    left: 14px;
-    right: 14px;
+    top: 55px;
     bottom: 15px;
+    overflow-y: auto;
+    padding-right: 5px;
+  }
+
+  .cardDetailsTitle {
+    font-size: 15px;
+    margin-bottom: 8px;
   }
 
   .cardDetails p {
-    font-size: 11px;
+    display: block;
+    overflow: visible;
+    font-size: 10px;
+    line-height: 1.4;
   }
 
   .projectTechnologies {
-    gap: 4px;
-    margin-top: 10px;
-    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: none;
+    overflow: visible;
   }
 
   .projectTechnologies span {
-    font-size: 9px;
-    padding: 4px 7px;
+    font-size: 8px;
+    padding: 3px 6px;
+  }
+
+  .title {
+    white-space: normal;
+    font-size: clamp(30px, 7.5vw, 36px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .title span {
+    display: block;
+    white-space: nowrap;
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.1;
+    margin-top: 10px;
   }
 }
 

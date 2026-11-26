@@ -428,3 +428,7 @@
   background: var(--color-sage-light);
   border-color: var(--color-sage);
 }
+
+:global([data-theme="light"]) .skills {
+  background: var(--color-header);
+}

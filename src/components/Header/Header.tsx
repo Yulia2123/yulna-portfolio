@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import css from "./Header.module.css";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Theme = "light" | "dark";
 
@@ -53,6 +54,8 @@ export default function Header() {
     localStorage.setItem("portfolio-theme", nextTheme);
   };
 
+  const { language, setLanguage, t } = useLanguage();
+
   return (
     <header className={css.header}>
       <div className={css.container}>
@@ -68,50 +71,80 @@ export default function Header() {
           </a>
         </div>
 
-        <nav className={css.desktopNav} aria-label="Main navigation">
+        <nav
+          className={css.desktopNav}
+          aria-label={t.navigation.mainNavigation}
+        >
           <a
             href="#home"
             className={activeSection === "home" ? css.active : ""}
           >
-            Home
-          </a>
-          <a
-            href="#about"
-            className={activeSection === "about" ? css.active : ""}
-          >
-            About
-          </a>
-
-          <a
-            href="#skills"
-            className={activeSection === "skills" ? css.active : ""}
-          >
-            Skills
+            {t.navigation.home}
           </a>
 
           <a
             href="#projects"
             className={activeSection === "projects" ? css.active : ""}
           >
-            Projects
+            {t.navigation.projects}
+          </a>
+
+          <a
+            href="#skills"
+            className={activeSection === "skills" ? css.active : ""}
+          >
+            {t.navigation.skills}
+          </a>
+
+          <a
+            href="#about"
+            className={activeSection === "about" ? css.active : ""}
+          >
+            {t.navigation.about}
           </a>
 
           <a
             href="#contacts"
             className={activeSection === "contacts" ? css.active : ""}
           >
-            Contact
+            {t.navigation.contacts}
           </a>
         </nav>
 
         <div className={css.actions}>
-          <button
-            type="button"
-            className={`${css.language} brand-text`}
-            aria-label="Select language"
+          <div
+            className={css.languageSwitch}
+            role="group"
+            aria-label={t.navigation.chooseLanguage}
           >
-            EN
-          </button>
+            <span
+              className={`${css.languageIndicator} ${
+                language === "ua" ? css.languageIndicatorUa : ""
+              }`}
+            />
+
+            <button
+              type="button"
+              className={`${css.languageOption} ${
+                language === "en" ? css.languageActive : ""
+              }`}
+              onClick={() => setLanguage("en")}
+              aria-pressed={language === "en"}
+            >
+              EN
+            </button>
+
+            <button
+              type="button"
+              className={`${css.languageOption} ${
+                language === "ua" ? css.languageActive : ""
+              }`}
+              onClick={() => setLanguage("ua")}
+              aria-pressed={language === "ua"}
+            >
+              UA
+            </button>
+          </div>
 
           <button
             type="button"
@@ -146,7 +179,7 @@ export default function Header() {
           </button>
 
           <a href="#contacts" className="btn btn-primary brand-text">
-            Contact me
+            {t.navigation.contactMe}
           </a>
 
           <button
@@ -181,11 +214,11 @@ export default function Header() {
           </a>
 
           <a
-            href="#about"
-            className={activeSection === "about" ? css.active : ""}
+            href="#projects"
+            className={activeSection === "projects" ? css.active : ""}
             onClick={() => setIsMenuOpen(false)}
           >
-            About
+            Projects
           </a>
 
           <a
@@ -197,11 +230,11 @@ export default function Header() {
           </a>
 
           <a
-            href="#projects"
-            className={activeSection === "projects" ? css.active : ""}
+            href="#about"
+            className={activeSection === "about" ? css.active : ""}
             onClick={() => setIsMenuOpen(false)}
           >
-            Projects
+            About
           </a>
 
           <a
